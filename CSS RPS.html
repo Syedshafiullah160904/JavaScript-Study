@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM RPS</title>
+    <style>
+      body {
+        background-color: rgb(25, 25, 25);
+        color: white;
+        font-family: Arial;
+      }
+      .title {
+        font-size: 30px;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+
+  <body>
+    <p class="title">Rock Paper Scissors</p>
+
+    <button onclick="playGame('rock')" class="rock">Rock</button>
+    <button onclick="playGame('paper')" class="paper">Paper</button>
+    <button onclick="playGame('scissors')" class="'Scissors">Scissors</button>
+
+    <p class="js-result"></p>
+    <p class="js-moves"></p>
+    <p class="js-score"></p>
+
+    <button
+      onclick="
+        Score.wins = 0;
+        Score.lose = 0;
+        Score.ties = 0;
+        localStorage.removeItem('score');
+        updateScoreElement();
+      "
+    >
+      Reset Score
+    </button>
+
+    <script>
+      // Load existing score or set default
+      const Score = JSON.parse(localStorage.getItem("score")) || {
+        wins: 0,
+        lose: 0,
+        ties: 0,
+      };
+
+      updateScoreElement();
+
+      // Main game logic
+      function playGame(playerMove) {
+        const commove = pickComputerMove();
+        let res = "";
+
+        if (playerMove === "scissors") {
+          if (commove === "rock") res = "You lose";
+          else if (commove === "paper") res = "You win";
+          else res = "Tie";
+        } else if (playerMove === "paper") {
+          if (commove === "paper") res = "Tie";
+          else if (commove === "rock") res = "You win";
+          else res = "You lose";
+        } else if (playerMove === "rock") {
+          if (commove === "rock") res = "Tie";
+          else if (commove === "paper") res = "You lose";
+          else res = "You win";
+        }
+
+        if (res === "You win") Score.wins += 1;
+        else if (res === "You lose") Score.lose += 1;
+        else Score.ties += 1;
+
+        // Save updated score
+        localStorage.setItem("score", JSON.stringify(Score));
+
+        // Update DOM
+        updateScoreElement();
+        document.querySelector(".js-result").textContent = res;
+        document.querySelector(
+          ".js-moves"
+        ).textContent = `You picked ${playerMove}, Computer picked ${commove}.`;
+      }
+
+      // Update score display
+      function updateScoreElement() {
+        document.querySelector(
+          ".js-score"
+        ).textContent = `Wins: ${Score.wins}, Lose: ${Score.lose}, Ties: ${Score.ties}`;
+      }
+
+      // Pick computer move randomly
+      function pickComputerMove() {
+        const rannum = Math.random();
+        if (rannum < 1 / 3) return "rock";
+        else if (rannum < 2 / 3) return "paper";
+        else return "scissors";
+      }
+    </script>
+  </body>
+</html>

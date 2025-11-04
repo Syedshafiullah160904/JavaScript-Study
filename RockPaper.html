@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rock Paper Scissors</title>
+  </head>
+  <body>
+    <h1>Rock Paper Scissors</h1>
+    <button
+      onclick="
+        const rannum=Math.random();
+        let commove='';
+        if(rannum>=0 && rannum<=1/3){ commove='rock';}
+        else if(rannum>=1/3 && rannum<=2/3){ commove='paper';}
+        else if(rannum>=2/3 && rannum<=1){ commove='scisssors';}
+        console.log(commove);
+        let res='';
+        if(commove==='rock'){res='Tie.' ;}
+        else if(commove==='paper'){res='you lose';}
+        else if(commove==='scisssors'){res='you win';}
+        alert(`You picked rock. computer picked ${commove}. ${res}.`);
+    "
+    >
+      Rock
+    </button>
+    <button
+      onclick="
+        const rannum1=Math.random();
+        let commove1='';
+        if(rannum1>=0 && rannum1<=1/3){ commove1='rock';}
+        else if(rannum1>=1/3 && rannum1<=2/3){ commove1='paper';}
+        else if(rannum1>=2/3 && rannum1<=1){ commove1='scisssors';}
+        console.log(commove1);
+        let res11='';
+        if(commove1==='paper'){res1='Tie.' ;}
+        else if(commove1==='rock'){res1='you win';}
+        else if(commove1==='scisssors'){res1='you lose';}
+        alert(`You picked Paper. computer picked ${commove1}. ${res1}.`);
+    "
+    >
+      Paper
+    </button>
+    <button
+      onclick="
+        const rannum2=Math.random();
+        let commove2='';
+        if(rannum2>=0 && rannum2<=1/3){ commove2='rock';}
+        else if(rannum2>=1/3 && rannum2<=2/3){ commove2='paper';}
+        else if(rannum2>=2/3 && rannum2<=1){ commove2='scisssors';}
+        console.log(commove2);
+        let res2='';
+        if(commove2==='scisssors'){res2='Tie.' ;}
+        else if(commove2==='rock'){res2='you lose';}
+        else if(commove2==='paper'){res2='you win';}
+        alert(`You picked Scissors. computer picked ${commove2}. ${res2}.`);
+    "
+    >
+      Scissors
+    </button>
+  </body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rock Paper Scissors</title>
+  </head>
+  <body>
+    <h1>Rock Paper Scissors</h1>
+    <button onclick="playGame('rock'); ">Rock</button>
+    <button onclick="playGame('paper'); ">Paper</button>
+    <button onclick="playGame('scissors'); ">Scissors</button>
+
+    <script>
+      function playGame(playerMove) {
+        const commove = pickComputerMove();
+        console.log(commove);
+        let res = "";
+        if (playerMove === "scissors") {
+          if (commove === "rock") {
+            res = "you lose.";
+          } else if (commove === "paper") {
+            res = "you win";
+          } else if (commove === "scissors") {
+            res = "Tie";
+          }
+        } else if (playerMove === "paper") {
+          if (commove === "paper") {
+            res = "Tie.";
+          } else if (commove === "rock") {
+            res = "you win";
+          } else if (commove === "scissors") {
+            res = "you lose";
+          }
+        } else if (playerMove === "rock") {
+          if (commove === "rock") {
+            res = "Tie.";
+          } else if (commove === "paper") {
+            res = "you lose";
+          } else if (commove === "scissors") {
+            res = "you win";
+          }
+        }
+        alert(`You picked ${playerMove}. computer picked ${commove}. ${res}.`);
+      }
+      function pickComputerMove() {
+        const rannum = Math.random();
+        let commove = "";
+        if (rannum >= 0 && rannum <= 1 / 3) {
+          commove = "rock";
+        } else if (rannum >= 1 / 3 && rannum <= 2 / 3) {
+          commove = "paper";
+        } else if (rannum >= 2 / 3 && rannum <= 1) {
+          commove = "scisssors";
+        }
+        return commove;
+      }
+    </script>
+  </body>
+</html>
