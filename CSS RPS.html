@@ -14,19 +14,54 @@
         font-size: 30px;
         font-weight: bold;
       }
+      .move-icon {
+        height: 80px;
+        margin-left: 10px;
+        margin-right: 10px;
+      }
+      .move-button {
+        /*background-color:transparent;*/
+        border: 3px solid black;
+        width: 120px;
+        height: 120px;
+        border-radius: 60px;
+        margin-right: 10px;
+        cursor: pointer;
+      }
+      .result {
+        font-size: 25px;
+        font-weight: bold;
+        margin-top: 50px;
+      }
+      .score {
+        margin-top: 50px;
+      }
+      .reset-score-button {
+        background-color: white;
+        border: none;
+        font-size: 15px;
+        padding: 8px 15px;
+        cursor: pointer;
+      }
     </style>
   </head>
 
   <body>
     <p class="title">Rock Paper Scissors</p>
 
-    <button onclick="playGame('rock')" class="rock">Rock</button>
-    <button onclick="playGame('paper')" class="paper">Paper</button>
-    <button onclick="playGame('scissors')" class="'Scissors">Scissors</button>
+    <button onclick="playGame('rock')" class="move-button">
+      <img src="images/rock.jpeg" class="move-icon" />
+    </button>
+    <button onclick="playGame('paper')" class="move-button">
+      <img src="images/paper.jpeg" class="move-icon" />
+    </button>
+    <button onclick="playGame('scissors')" class="move-button">
+      <img src="images/scissors.jpeg" class="move-icon" />
+    </button>
 
-    <p class="js-result"></p>
+    <p class="js-result result"></p>
     <p class="js-moves"></p>
-    <p class="js-score"></p>
+    <p class="js-score score"></p>
 
     <button
       onclick="
@@ -36,6 +71,7 @@
         localStorage.removeItem('score');
         updateScoreElement();
       "
+      class="reset-score-button"
     >
       Reset Score
     </button>
@@ -79,9 +115,9 @@
         // Update DOM
         updateScoreElement();
         document.querySelector(".js-result").textContent = res;
-        document.querySelector(
-          ".js-moves"
-        ).textContent = `You picked ${playerMove}, Computer picked ${commove}.`;
+        document.querySelector(".js-moves").innerHTML = `You
+      <img src="images/${playerMove}.jpeg" class="move-icon"  />
+      <img src="images/${commove}.jpeg" class="move-icon " />computer`;
       }
 
       // Update score display
